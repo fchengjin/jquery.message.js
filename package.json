@@ -1,0 +1,21 @@
+{
+  "name": "jquery.message.js",
+  "version": "0.0.2",
+  "author": "fcheng(fchengjin@126.com)",
+  "dependencies": {},
+  "devDependencies": {
+    "body-parser": "^1.17.2",
+    "browser-sync": "^2.18.13",
+    "express": "^4.15.4",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
+    "path": "^0.12.7"
+  }
+}
