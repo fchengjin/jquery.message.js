@@ -22,9 +22,9 @@ $.message('这是一个消息提示框')
  }
  ```
 ## 高级用法
-[参考教程](https://fchengjin.github.io/jquery.message.js/example/)
+[参考教程](https://fchengjin.github.io/jquery.message.js/index.html)
 ## Demo
-[在线地址](https://fchengjin.github.io/jquery.message.js/example/)
+[在线地址](https://fchengjin.github.io/jquery.message.js/index.html)
 ```bash
 git clone https://github.com/fchengjin/jquery.message.js
 cd jquery.message.js
