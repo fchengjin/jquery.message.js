@@ -12,7 +12,7 @@ var uglify = require('gulp-uglify'),
     clean = require('gulp-clean');
 
 gulp.task('scss', function () {
-    gulp.src('./example/scss/*.scss')
+    gulp.src('./docs/scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass.sync({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer({
@@ -34,12 +34,12 @@ gulp.task('scss', function () {
             remove: true //是否去掉不必要的前缀 默认：true
         }))
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('./example/css'))
+        .pipe(gulp.dest('./docs/css'))
         .pipe(browserSync.stream());
 });
 gulp.task('watch', function () {
-    gulp.watch('./example/scss/*.scss', ['scss']);
-    gulp.watch(['./example/js/*.js','./example/*.html']).on('change', browserSync.reload);
+    gulp.watch('./docs/scss/*.scss', ['scss']);
+    gulp.watch(['./docs/js/*.js','./docs/*.html']).on('change', browserSync.reload);
 });
 gulp.task('serve', ['nodemon'], function () {
     browserSync.init(null, {
@@ -69,7 +69,7 @@ gulp.task('clean',function () {
 
 //js文件压缩
 gulp.task('jsmin',function () {
-    gulp.src('./example/js/*.js')
+    gulp.src('./docs/js/*.js')
         .pipe(sourcemaps.init())
         .pipe(gulp.dest('./dist/js/'))
         .pipe(uglify())
@@ -81,7 +81,7 @@ gulp.task('jsmin',function () {
 });
 //css文件压缩
 gulp.task('cssmin',function () {
-    gulp.src('./example/scss/*.scss')
+    gulp.src('./docs/scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass.sync({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer({

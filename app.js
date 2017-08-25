@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 var resolve = file => path.resolve(__dirname, file);
-app.use('/', express.static(resolve('./example')));
+app.use('/', express.static(resolve('./docs')));
 app.use('/dist', express.static(resolve('./dist')));
 
 app.use(bodyParser.json());
