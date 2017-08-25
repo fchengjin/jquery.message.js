@@ -1,5 +1,5 @@
-.jq-message{
-  box-shadow: 0 2px 4px rgba(0,0,0,.12), 0 0 6px rgba(0,0,0,.04);
+.jq-message {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
   min-width: 300px;
   padding: 10px 12px;
   box-sizing: border-box;
@@ -9,16 +9,23 @@
   top: 20px;
   transform: translateX(-50%);
   background-color: #fff;
-  transition: opacity .3s,transform .4s;
+  z-index: 999;
+  transition: opacity .3s, transform .4s;
   overflow: hidden;
+  &.begin{
+    transform: translate(-50%,-100%);
+    opacity: 0;
+  }
 }
-.jq-message__img{
+
+.jq-message__img {
   width: 40px;
   height: 40px;
   position: absolute;
   left: 0;
   top: 0;
 }
+
 .jq-message__group {
   margin-left: 38px;
   position: relative;
@@ -27,11 +34,27 @@
   display: flex;
   align-items: center;
 }
+
 .jq-message__closeBtn {
-  top: 3px;
-  right: 0;
+  font-family: "Microsoft YaHei", 微软雅黑;
   position: absolute;
+  top: 0;
+  right: 0;
   cursor: pointer;
   color: #bfcbd9;
-  font-size: 14px;
+  font-size: 28px;
+  font-weight: 400;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  transition: color .3s ease;
+  &:hover {
+    color: #a9a9a9;
+  }
+}
+
+.jq-message-fadeOutUp {
+  transform: translate(-50%, -100%);
+  opacity: 0;
 }

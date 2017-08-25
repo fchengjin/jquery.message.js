@@ -2,8 +2,231 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
     <title>jquery.message.js</title>
+    <link rel="stylesheet" href="css/jquery.message.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        h2 + p {
+            line-height: 2.5;
+        }
+
+        .testest {
+            font-size: 20px;
+            color: beige;
+        }
+
+        .block {
+            width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 4px 4px #ccc;
+        }
+
+        .inline {
+            display: inline-block;
+            width: 48%;
+            vertical-align: top;
+        }
+
+        .block .inline:nth-child(2n+1) {
+            margin-right: 4%;
+        }
+
+        button {
+            padding: 0 15px;
+            font-size: 14px;
+            outline: none;
+            height: 34px;
+            border-radius: 17px;
+            box-shadow: none;
+            background: white;
+            color: black;
+            border: 1px solid #c4c4c4;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        pre {
+            overflow: auto;
+            border: 1px solid #ccc;
+            line-height: 1.5;
+            font-size: 14px;
+            padding: 15px;
+            color: #333;
+        }
+
+        i {
+            color: aquamarine;
+        }
+    </style>
 </head>
 <body>
+<div class="block">
+    <h2>基础用法</h2>
+    <p>从顶部出现，3s后消失</p>
+    <div class="inline">
+        <button onclick="defaultMessage('这是一个默认提示框')">默认提示框</button>
+        <pre>$.message('这是一个默认提示框');</pre>
+    </div><div class="inline">
+        <button onclick="defaultMessage('有&lt;i&gt;节点&lt;/i&gt;的提示框')">带有节点元素的提示框</button>
+        <pre>$.message('有&lt;i&gt;节点&lt;/i&gt;的提示框');</pre>
+    </div>
+</div>
+<div class="block">
+    <h2>不同状态</h2>
+    <p>有四种不同状态可选: info ,success, warning, error</p>
+    <div class="inline">
+        <button onclick="typeMessage('info','这是一条普通消息。')">普通消息</button>
+        <pre>
+$.message.info('这是一条普通消息。')
+//或者
+$.message({
+    type:'info',
+    message:'这是一条普通消息。'
+});</pre>
+    </div><div class="inline">
+    <button onclick="typeMessage('success','这是一条成功消息。')">成功消息</button>
+    <pre>
+$.message.success('这是一条成功消息。')
+//或者
+$.message({
+    type:'success',
+    message:'这是一条成功消息'
+});</pre>
+    </div><div class="inline">
+    <button onclick="typeMessage('warning','这是一条警告消息。')">警告消息</button>
+    <pre>
+$.message.warning('这是一条警告消息。')
+//或者
+$.message({
+    type:'warning',
+    message:'这是一条警告消息'
+});</pre>
+    </div><div class="inline">
+    <button onclick="typeMessage('error','这是一条错误消息。')">错误消息</button>
+    <pre>
+$.message.error('这是一条错误消息。')
+//或者
+$.message({
+    type:'error',
+    message:'这是一条错误消息'
+});</pre>
+    </div>
+</div>
+<div class="block">
+    <h2>可关闭</h2>
+    <p>设置showClose为true，可以显示关闭按钮；设置duration为0，则提示框不会自动关闭</p>
+    <div class="inline">
+        <button onclick="closeMessage('info','可以关闭的提示框。')">可以关闭的提示框</button>
+        <pre>
+$.message.info({
+    message:'可以关闭的提示框。',
+    showClose: true,
+})
+//或者
+$.message({
+    type:'info',
+    message:'可以关闭的提示框。',
+    showClose: true
+});</pre>
+    </div><div class="inline">
+    <button onclick="closeMessage('success','只能手动关闭的提示框。',0)">只能手动关闭的提示框</button>
+    <pre>
+$.message.success({
+    message:'只能手动关闭的提示框。',
+    showClose: true,
+    duration:0
+})
+//或者
+$.message({
+    type:'success',
+    message:'只能手动关闭的提示框。',
+    showClose: true,
+    duration:0
+});</pre>
+</div><div class="inline">
+    <button onclick="closeMessage('error','5s后关闭的提示框。',5000)">5s后关闭的提示框</button>
+    <pre>
+$.message.error({
+    message:'5s后关闭的提示框',
+    showClose: true,
+    duration:5000
+})
+//或者
+$.message({
+    type:'error',
+    message:'5s后关闭的提示框',
+    showClose: true,
+    duration:5000
+});</pre>
+</div><div class="inline">
+    <button onclick="closeMessage('warning','关闭时触发回调。',function(self) {
+      alert(self.msgId);
+    })">关闭时触发回调</button>
+    <pre>
+$.message.warning({
+    message:'关闭时触发回调。',
+    showClose: true,
+    onClose:function(self){
+        alert(self.msgId);
+        }
+});
+//或者
+$.message({
+    type:'warning',
+    message:'关闭时触发回调。',
+    showClose: true,
+    onClose:function(self){
+        alert(self.msgId);
+        }
+});</pre>
+</div>
+</div>
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/jquery.message.js"></script>
+<script>
+    function defaultMessage(msg) {
+        $.message(msg);
+    }
+
+    function typeMessage(type,msg) {
+        $.message({
+            type: type,
+            message: msg
+        })
+    }
+    function closeMessage(type,msg,duration,cb){
+        if(typeof duration === 'function'){
+            cb = duration;
+            duration = 3000
+        }
+        $.message({
+            type: type,
+            message: msg,
+            showClose: true,
+            duration: duration,
+            onClose: cb
+        })
+    }
+
+    [].forEach.call(document.getElementsByTagName('button'), function (a) {
+        var color = "#" + (~~(Math.random() * (1 << 24))).toString(16);
+        a.style.borderColor = color;
+        a.style.color = color;
+    })
+</script>
 </body>
 </html>

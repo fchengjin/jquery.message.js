@@ -82,6 +82,7 @@ gulp.task('jsmin',function () {
 //css文件压缩
 gulp.task('cssmin',function () {
     gulp.src('./example/scss/*.scss')
+        .pipe(sourcemaps.init())
         .pipe(sass.sync({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: [
@@ -103,6 +104,10 @@ gulp.task('cssmin',function () {
         }))
         .pipe(gulp.dest('./dist/css'))
         .pipe(minifyCss())
+        .pipe(rename(function (path) {
+            path.basename += ".min";
+        }))
+        .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest('./dist/css'))
 });
 
