@@ -1,0 +1,86 @@
+@charset "UTF-8";
+.jq-message {
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+  min-width: 300px;
+  padding: 10px 12px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 2px;
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: #fff;
+  z-index: 999;
+  -webkit-transition: opacity .3s, -webkit-transform .4s;
+  transition: opacity .3s, -webkit-transform .4s;
+  transition: opacity .3s, transform .4s;
+  transition: opacity .3s, transform .4s, -webkit-transform .4s;
+  overflow: hidden;
+}
+
+.jq-message.begin {
+  -webkit-transform: translate(-50%, -100%);
+      -ms-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
+  opacity: 0;
+}
+
+.jq-message__img {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.jq-message__group {
+  margin-left: 38px;
+  position: relative;
+  height: 20px;
+  line-height: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.jq-message__closeBtn {
+  font-family: "Microsoft YaHei", 微软雅黑;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  color: #bfcbd9;
+  font-size: 28px;
+  font-weight: 400;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+}
+
+.jq-message__closeBtn:hover {
+  color: #a9a9a9;
+}
+
+.jq-message-fadeOutUp {
+  -webkit-transform: translate(-50%, -100%);
+      -ms-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
+  opacity: 0;
+}
+
+/*# sourceMappingURL=maps/jquery.message.css.map */
